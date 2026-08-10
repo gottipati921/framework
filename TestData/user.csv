@@ -1,0 +1,5 @@
+"email","password","validity"
+"gsumana07@gmail.com","admin@123","valid"
+"test@gmail.com","admin","invalid"
+"gsumana07@gmail.com","admin","invalid"
+"","","invalid"

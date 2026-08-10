@@ -1,0 +1,25 @@
+[
+{
+"email"    : "gsumana07@gmail.com",
+"password" : "admin@123",
+"validity" : "valid"
+},
+
+{
+"email"    : "tester@gmail.com",
+"password" : "admin",
+"validity" : "invalid"
+},
+
+{
+"email"    : "gsumana07@gmail.com",
+"password" : "admin",
+"validity" : "invalid"
+},
+
+{
+"email"    : "",
+"password" : "",
+"validity" : "invalid"
+}
+]

@@ -1,0 +1,67 @@
+import {test,expect} from "playwright/test";
+
+test.describe('test frames', () => {
+
+//test1 
+test('Nested Frames Test', async ({page}) => {
+
+    await page.goto('https://demo.automationtesting.in/Frames.html');
+    await page.getByRole('link',{name:'Iframe with in an Iframe'}).click();
+    //await page.locator('a[href="#Multiple"]').click();
+    //switch to outer frame
+    const outerFrame = await page.frameLocator('iframe[src ="MultipleFrames.html"]');
+    const InnerFrame = await outerFrame.frameLocator('iFrame[src ="SingleFrame.html"]');
+    await InnerFrame.locator('input[type="text"]').fill('testing');
+    await expect(InnerFrame.locator('input[type="text"]')).toHaveText('/test/i')
+    console.log()
+    await page.screenshot({path:'screenshots/Nested/frameLocator_1.png'});
+
+});
+
+//test2 
+test('Nested pageFrames Loop', async ({page}) => {
+
+    await page.goto('https://demo.automationtesting.in/Frames.html');
+    await page.getByRole('link',{name:'Iframe with in an Iframe'}).click();
+    //switch to outer frame
+     const allFrames = page.frames();
+     for (const frame of allFrames){
+       console.log(frame.url());
+     }
+ const frame = page.frames().find(frame=>
+    frame.url().includes('SingleFrame.html'));
+    //console.log(`frameslist:${frame}`)
+   await page.screenshot({path:'screenshots/Nested/frameLocator_2.png'});
+
+});
+
+//test 3
+test('single Frame Test', async ({page}) => {
+
+    await page.goto('https://demo.automationtesting.in/Frames.html');
+    const InnerFrame = await page.frameLocator('iframe[src ="SingleFrame.html"]');
+    const text =  await InnerFrame.locator('input[type="text"]').fill('sumana');
+     await expect(InnerFrame.locator('input[type="text"]')).toHaveText('/suma/i')
+    await page.screenshot({path:'screenshots/Nested/frameLocator_3.png'});
+
+});
+
+
+//test 4
+test('single Frame using pageFrames Test', async ({page}) => {
+
+    await page.goto('https://demo.automationtesting.in/Frames.html');
+    //switch to outer frame
+    const allFrames = page.frames();
+    //console.log(allFrames);
+      for (const frame of allFrames){
+        console.log(frame.url());
+     }
+   const frame = page.frames().find(frame=>
+    frame.url().includes('SingleFrame.html'));
+    //console.log(`frameslist:${frame}`)
+     await page.screenshot({path:'screenshots/Nested/frameLocator_4.png'});
+
+});
+
+});
