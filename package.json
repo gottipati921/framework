@@ -1,9 +1,12 @@
 {
-  "name": "kapruka-playwright-framework",
+  "name": "playwright-framework",
   "version": "1.0.0",
-  "description": "Enterprise Playwright TypeScript automation framework for kapruka.com",
+  "description": "Enterprise Playwright TypeScript automation framework for sauceDemo.com",
   "scripts": {
-    "test": "playwright test",
+    "test:dev": "cross-env TEST_ENV=dev npx playwright test tests/sauceDemo.spec.ts --headed",
+    "test:qa": "cross-env TEST_ENV=qa npx playwright test tests/sauceDemo.spec.ts --headed",
+    "test:prod": "cross-env TEST_ENV=prod npx playwright test tests/sauceDemo.spec.ts --headed",
+    "test:ci": "cross-env TEST_ENV=qa CI=true npx playwright test --project=chromium",
     "test:headed": "playwright test --headed",
     "test:ui": "playwright test --ui",
     "test:debug": "playwright test --debug",
@@ -17,13 +20,13 @@
     "test:search": "playwright test --grep @search",
     "test:login": "playwright test --grep @login",
     "report": "playwright show-report reports/html-report",
-    "codegen": "playwright codegen https://www.kapruka.com",
     "trace": "playwright show-trace"
   },
   "devDependencies": {
     "@playwright/test": "^1.61.1",
     "@types/node": "^20.19.43",
     "allure-playwright": "^3.10.2",
+    "cross-env": "^10.1.0",
     "dotenv": "^16.6.1",
     "typescript": "^5.4.0",
     "winston": "^3.13.0"
