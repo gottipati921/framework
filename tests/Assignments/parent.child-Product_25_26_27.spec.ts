@@ -17,10 +17,10 @@ test('Verify all ProductNames and PriceItems are visible', async ({page}) => {
  //for each loop
  //method 1
  //space-
-    const expectedProducts = await page.locator('.inventory_list .inventory_item .inventory_item_description .inventory_item_label a div[data-test="inventory-item-name"]').allTextContents();
-    const priceItems = await page.locator('.inventory_list .inventory_item .inventory_item_description .pricebar .inventory_item_price').allTextContents();
-    expect(expectedProducts).toEqual(6);
-    expect(priceItems).toEqual(6);
+    const expectedProducts = await page.locator('.inventory_list .inventory_item .inventory_item_description .inventory_item_label a div[data-test="inventory-item-name"]').allInnerTexts();
+    const priceItems = await page.locator('.inventory_list .inventory_item .inventory_item_description .pricebar .inventory_item_price').allInnerTexts();
+    await expect(expectedProducts).toHaveLength(6);
+    await expect(priceItems).toHaveLength(6);
     console.log(`Product list : ${expectedProducts}`);
     console.log(`Price List: ${priceItems}`);
     await page.screenshot({path:'screenshots/product/name_price_27.png', fullPage:true});
@@ -47,7 +47,7 @@ test('Verify all ProductNames and PriceItems are visible', async ({page}) => {
       const productExpected = await page.locator('.inventory_list .inventory_item .inventory_item_description .inventory_item_label a div').filter({hasText:'Sauce Labs Backpack'});
       console.log(`Product Existence : ${productExpected}`);
       await expect(productExpected).toHaveText('Sauce Labs Backpack');
-      await expect(productExpected).toContainText('Sauce Labs Backpack');
+     // await expect(productExpected).toContainText('Sauce Labs Backpack');
       await page.screenshot({path:'screenshots/product/productExist.png', fullPage:true});
      
     });
@@ -62,8 +62,7 @@ test('Verify all ProductNames and PriceItems are visible', async ({page}) => {
     console.log(`Verified Products: ${products}`);
     console.log(`Verified ProductNames: ${productName}`);
     await page.screenshot({path:'screenshots/product/name_26.png', fullPage:true});
-    
-}
+    }
 });
 
  test.afterEach(async ({page})=>{

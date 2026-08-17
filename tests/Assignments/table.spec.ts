@@ -26,7 +26,7 @@ test('handle Table2', async ({page})=> {
 console.log(headers);
 const userRowsentire:string[] = await userTable.locator('tbody tr').allInnerTexts();
 //const Rows:string[] = await userTable.locator('tbody tr').allTextContents();
-for(const Row of Rows){
+for(const Row of userRowsentire){
 console.log(Row);
 }
 });

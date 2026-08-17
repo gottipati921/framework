@@ -12,8 +12,8 @@ test('Nested Frames Test', async ({page}) => {
     const outerFrame = await page.frameLocator('iframe[src ="MultipleFrames.html"]');
     const InnerFrame = await outerFrame.frameLocator('iFrame[src ="SingleFrame.html"]');
     await InnerFrame.locator('input[type="text"]').fill('testing');
-    await expect(InnerFrame.locator('input[type="text"]')).toHaveText('/test/i')
-    console.log()
+    await expect(InnerFrame.locator('input[type="text"]')).toBeVisible();
+    await expect(InnerFrame.locator('input[type="text"]')).toHaveValue('testing');
     await page.screenshot({path:'screenshots/Nested/frameLocator_1.png'});
 
 });
@@ -41,7 +41,8 @@ test('single Frame Test', async ({page}) => {
     await page.goto('https://demo.automationtesting.in/Frames.html');
     const InnerFrame = await page.frameLocator('iframe[src ="SingleFrame.html"]');
     const text =  await InnerFrame.locator('input[type="text"]').fill('sumana');
-     await expect(InnerFrame.locator('input[type="text"]')).toHaveText('/suma/i')
+     await expect(InnerFrame.locator('input[type="text"]')).toBeVisible();
+     await expect(InnerFrame.locator('input[type="text"]')).toHaveValue('sumana');
     await page.screenshot({path:'screenshots/Nested/frameLocator_3.png'});
 
 });
