@@ -1,6 +1,6 @@
 import { test, expect, devices } from '@playwright/test';
 
-//test.use({ ...devices['iPhone 15'] });
+test.use({ ...devices['iPhone 15'] });
 
 test('Conditional behavior based on project', async ({ page }, testInfo) => {
   // Access the current project name

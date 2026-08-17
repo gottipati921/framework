@@ -12,8 +12,8 @@ export default defineConfig({
     timeout: 10_000,
   },
 
-  fullyParallel: false,
-  workers: process.env.CI ? 2 : 3,
+  fullyParallel: true,
+  workers: process.env.CI ? 2 : undefined,
   retries: process.env.CI ? 2 : 0,
   forbidOnly: !!process.env.CI,
 
@@ -36,8 +36,8 @@ export default defineConfig({
     viewport: { width: 1280, height: 720 },
     ignoreHTTPSErrors: true,
     screenshot: 'only-on-failure',
-    video: 'retain-on-failure',
-    trace: 'retain-on-failure',
+    video: 'off',
+    trace: 'off',
     extraHTTPHeaders: {
       'Accept-Language': 'en-US,en;q=0.9',
     },
@@ -83,12 +83,12 @@ export default defineConfig({
       },
     },*/
     
-        {
+/*         {
       name: 'mobile-webkit',
       use: {
         ...devices['iPhone 12'],
         storageState: path.resolve(__dirname, 'auth.json'),
       },
-    }, 
+    },  */
   ],
 });

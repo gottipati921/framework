@@ -1,16 +1,21 @@
-import {test} from 'playwright/test';
-const { chromium } = require('playwright');
+import {test,expect,chromium} from '@playwright/test';
 
-test('browser launch' , (async () => {
-  const browser = await chromium.launch({ headless: false });
-  const page = await browser.newPage();
+test('test',async ()=>{
+   const browser = await chromium.launch();
+   const context = await browser.newContext();
+   const page1 = await context.newPage();
+   const page2 = await context.newPage();
+   console.log("no of pages created:", context.pages().length);
+   
+   await page1.goto("https://testautomationpractice.blogspot.com/");
+   
+   await expect(page1).toHaveTitle('Automation Testing Practice');
 
-  await page.goto('https://the-internet.herokuapp.com/login'); // Asynchronous
-  await page.getByRole('textbox',{name:'Username'}).fill('text');
-  await page.getByRole('textbox',{name:'Password'}).fill('text');
-  await page.locator("text= Login").click();
+   await page2.goto("https://demowebshop.tricentis.com/")
+   
+   await expect(page2).toHaveTitle('Demo Web Shop');
 
-  console.log(await page.title()); // Fetching title asynchronously
-
-  //await browser.close();
-}));
+await page1.waitForTimeout(3000);
+await page1.waitForTimeout(3000);
+}
+);

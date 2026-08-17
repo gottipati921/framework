@@ -10,18 +10,18 @@ test('Alert handling', async ({page}) => {
         console.log(`Encountered dialog type: ${dialog.type()}`);
 
          if(dialog.type()==='alert'){
-             page.screenshot({ path:'screenshots/Alert.png'});
+           await page.screenshot({ path:'screenshots/Alert.png'});
             await dialog.accept();
            
          }   
          else if(dialog.type()==='confirm'){
-                page.screenshot({ path:'screenshots/Confirm.png'});
+           await page.screenshot({ path:'screenshots/Confirm.png'});
             await dialog.accept();
         
          }
         else if(dialog.type()==='prompt'){
            expect(dialog.type()).toBe('prompt')
-           page.screenshot({ path:'screenshots/Prompt.png'});
+         //await page.screenshot({ path:'screenshots/Prompt.png'});
            await dialog.accept('sumana');
                       
         }

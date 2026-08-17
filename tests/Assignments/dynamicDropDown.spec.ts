@@ -21,7 +21,6 @@ test('Handle Dynmic dropdown', async({page})=>{
      await page.locator('.oxd-multiselect-wrapper').click();
      // setTimeout(()=>{debugger;},5000)
      await page.locator('[role="option"]', {hasText:'Cancelled'}).click();
-     await page.waitForTimeout(3000);
      await expect(page.locator('.oxd-multiselect-chips-area',{hasText:'Cancelled'})).toBeVisible();
     
 

@@ -31,7 +31,7 @@ async isLoaded(): Promise<void>{
 }
 async login(email: string, password: string): Promise<void>
 {
-  await this.emailInput.fill(process.env.USERNAME || email);
+  await this.emailInput.fill(process.env.USER || email);
   await this.passwordInput.fill(process.env.PASSWORD || password);
   await this.loginButton.click();
 }
@@ -41,7 +41,3 @@ async login(email: string, password: string): Promise<void>
 }
 //page -> constructor(page) -> this.page = page-> Stored in Page object
 //goto, click(), fill()
-
-
-process.env.USERNAME;
-process.env.PASSWORD;

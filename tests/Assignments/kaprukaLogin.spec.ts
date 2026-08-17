@@ -7,7 +7,8 @@ test('Kapruka Login Test', async ({page}) => {
   await page.locator('input[name="password"]').fill('test1');
   await page.getByRole('button', { name: 'Login' }).click();
   await expect(page.getByPlaceholder('SEARCH PRODUCTS..', { exact: true })).toBeVisible();
-  await page.getByText('Logout from your account').click();
- //full page screenshot with jpeg format
+   //full page screenshot with jpeg format
   await page.screenshot({ path: 'screenshots/test1.jpeg', fullPage: true, type: 'jpeg',quality: 80 });
+  await page.close();
+
   });

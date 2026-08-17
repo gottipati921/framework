@@ -1,5 +1,6 @@
 import {test,expect} from '@playwright/test';
 
+
 test('Open Browser Test', async ({page}) => {
     // Navigate to a website
     await page.goto('http://www.saucedemo.com/',{waitUntil: 'domcontentloaded', timeout: 60_000});

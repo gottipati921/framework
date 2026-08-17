@@ -14,10 +14,10 @@ type MyFixtures ={
 export const test = base.extend<MyFixtures>({
   authenticatedPage: async ({ page }, use) => {
     // 1. SETUP: Perform login sequence
-    await page.goto('https://example.com');
-    await page.fill('#username', 'testuser');
-    await page.fill('#password', 'securepassword');
-    await page.click('#submit-btn');
+    await page.goto('https://www.kapruka.com/shops/customerAccounts/accountLogin.jsp');
+    await page.fill('input[name="email"]', 'user2402@gmail.com');
+    await page.fill('input[name="password"]', 'Admin123');
+    await page.click('input[type="submit"][value="Login"]');
 
     // 2. PASS TO TEST: Yield control to the test function
     await use(page);
