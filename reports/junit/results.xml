@@ -1,0 +1,12 @@
+<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="10.773269">
+<testsuite name="Assignments\alerts_11.spec.ts" timestamp="2026-08-16T18:01:38.326Z" hostname="chromium" tests="1" failures="0" skipped="0" time="7.617" errors="0">
+<testcase name="Alert handling" classname="Assignments\alerts_11.spec.ts" time="7.617">
+<system-out>
+<![CDATA[Encountered dialog type: prompt
+
+[[ATTACHMENT|..\..\test-results\Assignments-alerts_11-Alert-handling-chromium\trace.zip]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+</testsuites>

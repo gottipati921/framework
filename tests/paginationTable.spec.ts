@@ -51,7 +51,7 @@ test('Pagination Table', async ({page})=>{
  });
 
 
-  test.only('Search specific record',async ({page})=>{
+  test('Search specific record',async ({page})=>{
 
     await page.goto('https://practice.expandtesting.com/dynamic-pagination-table');
 

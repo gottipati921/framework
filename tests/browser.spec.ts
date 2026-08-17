@@ -1,6 +1,6 @@
-import {test,expect,Page,chromium} from '@playwright/test';
+import {test,expect,chromium} from '@playwright/test';
 
-test('test', async({})=>{
+test('test',async ()=>{
    const browser = await chromium.launch();
    const context = await browser.newContext();
    const page1 = await context.newPage();

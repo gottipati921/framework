@@ -54,5 +54,41 @@ export default defineConfig({
         storageState: path.resolve(__dirname, 'auth.json'),
       },
     },
+/*     {
+      name: 'firefox',
+      use: {
+        ...devices['Desktop Firefox'],
+        storageState: path.resolve(__dirname, 'auth.json'),
+      },
+    },
+    {
+      name: 'webkit',
+      use: {
+        ...devices['Desktop WebKit'],
+        storageState: path.resolve(__dirname, 'auth.json'),
+      },
+    },
+        {
+      name: 'mobile-chrome',
+      use: {
+        ...devices['Pixel 5'],
+        storageState: path.resolve(__dirname, 'auth.json'),
+      },
+    },
+        {
+      name: 'mobile-firefox',
+      use: {
+        ...devices['Galaxy S20'],
+        storageState: path.resolve(__dirname, 'auth.json'),
+      },
+    },*/
+    
+        {
+      name: 'mobile-webkit',
+      use: {
+        ...devices['iPhone 12'],
+        storageState: path.resolve(__dirname, 'auth.json'),
+      },
+    }, 
   ],
 });
