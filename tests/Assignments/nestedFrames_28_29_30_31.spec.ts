@@ -24,16 +24,12 @@ test('Nested pageFrames Loop', async ({page}) => {
     await page.goto('https://demo.automationtesting.in/Frames.html');
     await page.getByRole('link',{name:'Iframe with in an Iframe'}).click();
     //switch to outer frame
-     const allFrames = page.frames();
-     for (const frame of allFrames){
-       console.log(frame.url());
-     }
- const frame = page.frames().find(frame=>
+    const frame = page.frames().find(frame=>
     frame.url().includes('SingleFrame.html'));
-    //console.log(`frameslist:${frame}`)
-   await page.screenshot({path:'screenshots/Nested/frameLocator_2.png'});
+    await page.screenshot({path:'screenshots/Nested/frameLocator_2.png'});
 
 });
+
 
 //test 3
 test('single Frame Test', async ({page}) => {
@@ -41,26 +37,22 @@ test('single Frame Test', async ({page}) => {
     await page.goto('https://demo.automationtesting.in/Frames.html');
     const InnerFrame = await page.frameLocator('iframe[src ="SingleFrame.html"]');
     const text =  await InnerFrame.locator('input[type="text"]').fill('sumana');
-     await expect(InnerFrame.locator('input[type="text"]')).toBeVisible();
-     await expect(InnerFrame.locator('input[type="text"]')).toHaveValue('sumana');
+    await expect(InnerFrame.locator('input[type="text"]')).toBeVisible();
+    await expect(InnerFrame.locator('input[type="text"]')).toHaveValue('sumana');
     await page.screenshot({path:'screenshots/Nested/frameLocator_3.png'});
 
 });
 
 
 //test 4
-test('single Frame using pageFrames Test', async ({page}) => {
+test('multi Frame using pageFrames Test', async ({page}) => {
 
     await page.goto('https://demo.automationtesting.in/Frames.html');
     //switch to outer frame
-    const allFrames = page.frames();
-    //console.log(allFrames);
-      for (const frame of allFrames){
-        console.log(frame.url());
-     }
-   const frame = page.frames().find(frame=>
-    frame.url().includes('SingleFrame.html'));
-    //console.log(`frameslist:${frame}`)
+     await page.getByRole('link',{name:'Iframe with in an Iframe'}).click();
+    const frame = page.frames().find(frame=>
+    frame.url().includes('MultipleFrames.html'));
+   
      await page.screenshot({path:'screenshots/Nested/frameLocator_4.png'});
 
 });

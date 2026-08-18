@@ -3,8 +3,11 @@ import {test,expect} from '@playwright/test';
 test('frame nested', async({page}) =>{
 
     await page.goto('https://the-internet.herokuapp.com/nested_frames');
-    const parentFrame = await page.frames();
-    console.log(`total frames count: ${parentFrame.length}`);
+    const allFrames = await page.frames();
+    console.log(`total frames count: ${allFrames.length}`);
+      for (const frame of allFrames){
+        console.log(frame.url());
+     }
     //frame1
     const topFrame = page.frameLocator('frameset [name="frame-top"]');
     const middleFrame = topFrame.frameLocator('frameset[name="frameset-middle"] frame[name="frame-middle"]');
