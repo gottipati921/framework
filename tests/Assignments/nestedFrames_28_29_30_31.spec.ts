@@ -1,3 +1,5 @@
+
+
 import {test,expect} from "playwright/test";
 
 test.describe('test frames', () => {
@@ -9,11 +11,10 @@ test('Nested Frames Test', async ({page}) => {
     await page.getByRole('link',{name:'Iframe with in an Iframe'}).click();
     //await page.locator('a[href="#Multiple"]').click();
     //switch to outer frame
-    const outerFrame = await page.frameLocator('iframe[src ="MultipleFrames.html"]');
-    const InnerFrame = await outerFrame.frameLocator('iFrame[src ="SingleFrame.html"]');
-    await InnerFrame.locator('input[type="text"]').fill('testing');
-    await expect(InnerFrame.locator('input[type="text"]')).toBeVisible();
-    await expect(InnerFrame.locator('input[type="text"]')).toHaveValue('testing');
+    const inputDataFrame = await page.frameLocator('iframe[src ="MultipleFrames.html"]').frameLocator('iFrame[src ="SingleFrame.html"]');
+    await inputDataFrame.locator('input[type="text"]').fill('testing');
+    await expect(inputDataFrame.locator('input[type="text"]')).toBeVisible();
+    await expect(inputDataFrame.locator('input[type="text"]')).toHaveValue('testing');
     await page.screenshot({path:'screenshots/Nested/frameLocator_1.png'});
 
 });
@@ -52,8 +53,7 @@ test('multi Frame using pageFrames Test', async ({page}) => {
      await page.getByRole('link',{name:'Iframe with in an Iframe'}).click();
     const frame = page.frames().find(frame=>
     frame.url().includes('MultipleFrames.html'));
-   
-     await page.screenshot({path:'screenshots/Nested/frameLocator_4.png'});
+    await page.screenshot({path:'screenshots/Nested/frameLocator_4.png'});
 
 });
 
