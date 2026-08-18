@@ -38,6 +38,7 @@ export default defineConfig({
     screenshot: 'only-on-failure',
     video: 'off',
     trace: 'off',
+    headless: true,
     extraHTTPHeaders: {
       'Accept-Language': 'en-US,en;q=0.9',
     },
