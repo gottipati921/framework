@@ -21,14 +21,16 @@ export default defineConfig({
     ? [
         ['list'],
         ['junit', { outputFile: 'reports/junit/results.xml' }],
+        ['json', { outputFile: 'reports/json-report/results.json' }],
         ['html', { open: 'never', outputFolder: 'playwright-report' }],
+         ['allure-playwright',{detail: true}],
       ]
     : [
         ['html', { open: 'never', outputFolder: 'playwright-report' }],
         ['json', { outputFile: 'reports/json-report/results.json' }],
         ['junit', { outputFile: 'reports/junit/results.xml' }],
         ['list'],
-        ['allure-playwright'],
+        ['allure-playwright',{detail: true}],
       ],
 
   use: {
