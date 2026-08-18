@@ -23,7 +23,7 @@
     "trace": "playwright show-trace"
   },
   "devDependencies": {
-    "@playwright/test": "^1.61.1",
+    "@playwright/test": "^1.62.1",
     "@types/node": "^20.19.43",
     "allure-playwright": "^3.10.2",
     "cross-env": "^10.1.0",
